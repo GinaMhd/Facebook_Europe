@@ -13,7 +13,7 @@ st.set_page_config(page_title="EU Regional Demographic Map", layout="wide")
 # SETTINGS
 # =========================================================
 DATA_PATH = "Combined.csv"
-REGION_GEOJSON_DIR = Path("geojson_regions")
+REGION_GEOJSON_DIR = Path("Geojason_countries")
 
 EU_COUNTRY_CODES = [
     "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR",
