@@ -12,8 +12,8 @@ st.set_page_config(page_title="EU Regional Demographic Map", layout="wide")
 # =========================================================
 # SETTINGS
 # =========================================================
-DATA_PATH = "/Users/zhina/FaceBook Project Bocconi/Combined.csv"
-REGION_GEOJSON_DIR = Path("/Users/zhina/FaceBook Project Bocconi/geojson_regions")
+DATA_PATH = "Combined.csv"
+REGION_GEOJSON_DIR = Path("geojson_regions")
 
 EU_COUNTRY_CODES = [
     "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR",
