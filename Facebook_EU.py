@@ -722,7 +722,7 @@ selected_age = st.sidebar.slider(
 )
 
 metric_label_map = {
-    "estimated_mau_midpoint": "Estimate DAU",
+    "estimated_mau_midpoint": "Estimate MAU",
     "estimate_mau_lower_bound": "Lower bound",
     "estimate_mau_upper_bound": "Upper bound",
 }
