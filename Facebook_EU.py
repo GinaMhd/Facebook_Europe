@@ -487,19 +487,19 @@ def load_data(path):
         df = df.drop(columns=["Unnamed: 0"])
 
     expected_cols = [
-        "category",
-        "indicator_name",
-        "location_name",
-        "gender",
-        "age_min",
-        "age_max",
-        "estimate_dau",
-        "estimate_mau_lower_bound",
-        "estimate_mau_upper_bound",
-        "month",
-        "month_name",
-        "year",
-        "country_code",
+    "category",
+    "indicator_name",
+    "location_name",
+    "gender",
+    "age_min",
+    "age_max",
+    "estimated_mau_midpoint",
+    "estimate_mau_lower_bound",
+    "estimate_mau_upper_bound",
+    "month",
+    "month_name",
+    "year",
+    "country_code",
     ]
 
     missing = [c for c in expected_cols if c not in df.columns]
@@ -509,7 +509,7 @@ def load_data(path):
     numeric_cols = [
         "age_min",
         "age_max",
-        "estimate_dau",
+        "estimated_mau_midpoint",
         "estimate_mau_lower_bound",
         "estimate_mau_upper_bound",
         "month",
@@ -595,7 +595,7 @@ def load_country_region_geojson(country_code):
 def build_europe_map(filtered_df, europe_geojson, metric):
     country_df = (
         filtered_df.groupby(["country_code", "country_name"], as_index=False)[
-            ["estimate_dau", "estimate_mau_lower_bound", "estimate_mau_upper_bound"]
+            ["estimated_mau_midpoint", "estimate_mau_lower_bound", "estimate_mau_upper_bound"]
         ]
         .sum()
     )
@@ -609,7 +609,7 @@ def build_europe_map(filtered_df, europe_geojson, metric):
         hover_name="country_name",
         hover_data={
             "country_code": True,
-            "estimate_dau": ":,.0f",
+            "estimated_mau_midpoint": ":,.0f",
             "estimate_mau_lower_bound": ":,.0f",
             "estimate_mau_upper_bound": ":,.0f",
         },
@@ -629,7 +629,7 @@ def build_europe_map(filtered_df, europe_geojson, metric):
 def build_region_map(country_df, country_geojson, feature_path, metric, title):
     region_df = (
         country_df.groupby("location_name", as_index=False)[
-            ["estimate_dau", "estimate_mau_lower_bound", "estimate_mau_upper_bound"]
+            ["estimated_mau_midpoint", "estimate_mau_lower_bound", "estimate_mau_upper_bound"]
         ]
         .sum()
     )
@@ -642,7 +642,7 @@ def build_region_map(country_df, country_geojson, feature_path, metric, title):
         color=metric,
         hover_name="location_name",
         hover_data={
-            "estimate_dau": ":,.0f",
+            "estimated_mau_midpoint": ":,.0f",
             "estimate_mau_lower_bound": ":,.0f",
             "estimate_mau_upper_bound": ":,.0f",
         },
@@ -722,7 +722,7 @@ selected_age = st.sidebar.slider(
 )
 
 metric_label_map = {
-    "estimate_dau": "Estimate DAU",
+    "estimated_mau_midpoint": "Estimate DAU",
     "estimate_mau_lower_bound": "Lower bound",
     "estimate_mau_upper_bound": "Upper bound",
 }
@@ -816,7 +816,7 @@ else:
 
     st.plotly_chart(region_fig, use_container_width=True)
 
-    total_dau = country_filtered_df["estimate_dau"].sum()
+    total_dau = country_filtered_df["estimated_mau_midpoint"].sum()
     total_lower = country_filtered_df["estimate_mau_lower_bound"].sum()
     total_upper = country_filtered_df["estimate_mau_upper_bound"].sum()
 
