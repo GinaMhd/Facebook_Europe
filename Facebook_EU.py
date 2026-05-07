@@ -821,7 +821,7 @@ else:
     total_upper = country_filtered_df["estimate_mau_upper_bound"].sum()
 
     c1, c2, c3 = st.columns(3)
-    c1.metric("Estimate DAU", format_int(total_dau))
+    c1.metric("Estimate MAU", format_int(total_dau))
     c2.metric("Lower bound", format_int(total_lower))
     c3.metric("Upper bound", format_int(total_upper))
 
