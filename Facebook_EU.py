@@ -613,7 +613,7 @@ def build_europe_map(filtered_df, europe_geojson, metric):
             "estimate_mau_lower_bound": ":,.0f",
             "estimate_mau_upper_bound": ":,.0f",
         },
-        color_continuous_scale="Reds",
+        color_continuous_scale="Blues",
     )
 
     fig.update_geos(fitbounds="locations", visible=False)
@@ -646,7 +646,7 @@ def build_region_map(country_df, country_geojson, feature_path, metric, title):
             "estimate_mau_lower_bound": ":,.0f",
             "estimate_mau_upper_bound": ":,.0f",
         },
-        color_continuous_scale="Reds",
+        color_continuous_scale="Blues",
     )
 
     fig.update_geos(fitbounds="locations", visible=False)
