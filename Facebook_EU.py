@@ -181,7 +181,7 @@ REGION_NAME_FIXES = {
     "Provence-Alpes-Cote d'Azur": "Provence-Alpes-Côte d’Azur",
     "Franche-Comte": "Franche-Comté",
     "Nord-Pas-de-Calais": "Nord-Pas de Calais",
-    "Centre": 'Centre — Val de Loire',
+    "Centre": "Limousin",
     "Midi-Pyrenees": "Midi-Pyrénées",
     },
     
